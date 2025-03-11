@@ -13,6 +13,8 @@ export class FskrabakAmbulanceWlApp {
   @State() private relativePath = "";
 
   @Prop() basePath: string="";
+  @Prop() apiBase: string;
+  @Prop() ambulanceId: string;
 
   componentWillLoad() {
     const baseUri = new URL(this.basePath, document.baseURI || "/").pathname;
@@ -55,7 +57,7 @@ export class FskrabakAmbulanceWlApp {
         ? <fskrabak-ambulance-wl-editor entry-id={entryId}
             oneditor-closed={ () => navigate("./list")} >
           </fskrabak-ambulance-wl-editor>
-        : <fskrabak-ambulance-wl-list onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } ></fskrabak-ambulance-wl-list>
+        : <fskrabak-ambulance-wl-list ambulance-id={this.ambulanceId} api-base={this.apiBase} onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } ></fskrabak-ambulance-wl-list>
         }
 
       </Host>
