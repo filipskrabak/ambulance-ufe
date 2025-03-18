@@ -55,6 +55,7 @@ export class FskrabakAmbulanceWlApp {
       <Host>
         { element === "editor"
         ? <fskrabak-ambulance-wl-editor entry-id={entryId}
+            ambulance-id={this.ambulanceId} api-base={this.apiBase}
             oneditor-closed={ () => navigate("./list")} >
           </fskrabak-ambulance-wl-editor>
         : <fskrabak-ambulance-wl-list ambulance-id={this.ambulanceId} api-base={this.apiBase} onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } ></fskrabak-ambulance-wl-list>
